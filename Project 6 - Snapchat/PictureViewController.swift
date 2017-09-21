@@ -33,9 +33,9 @@ class PictureViewController: UIViewController, UIImagePickerControllerDelegate, 
     }
     
     @IBAction func cameraTapped(_ sender: Any) {
-        if UIImagePickerController.isSourceTypeAvailable(.camera) {
+        if UIImagePickerController.isSourceTypeAvailable(.photoLibrary) {
             imagePicker.delegate = self
-            imagePicker.sourceType = .camera;
+            imagePicker.sourceType = .photoLibrary;
             imagePicker.allowsEditing = false
             self.present(imagePicker, animated: true, completion: nil)
         }
@@ -45,7 +45,7 @@ class PictureViewController: UIViewController, UIImagePickerControllerDelegate, 
         let image = info[UIImagePickerControllerOriginalImage] as! UIImage
         imageView.image = image
         imageView.backgroundColor = UIColor.clear
-        dismiss(animated: true, completion: nil)
+        imagePicker.dismiss(animated: true, completion: nil)
         nextButton.isEnabled = true
     }
 
