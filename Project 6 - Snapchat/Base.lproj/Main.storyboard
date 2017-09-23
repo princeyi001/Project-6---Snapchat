@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -22,7 +23,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SnapChat" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PDB-xP-afh">
-                                <rect key="frame" x="79" y="45" width="218" height="60"/>
+                                <rect key="frame" x="81.5" y="45" width="213" height="60"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="50"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -78,7 +79,7 @@
         <!--Snaps View Controller-->
         <scene sceneID="Ozu-lV-Jed">
             <objects>
-                <viewController id="B7z-0F-2yH" customClass="SnapsViewController" customModule="Project_6___Snapchat" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController automaticallyAdjustsScrollViewInsets="NO" id="B7z-0F-2yH" customClass="SnapsViewController" customModule="Project_6___Snapchat" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="qr1-Xt-6LQ"/>
                         <viewControllerLayoutGuide type="bottom" id="t57-BZ-07u"/>
@@ -86,7 +87,20 @@
                     <view key="view" contentMode="scaleToFill" id="5Yh-gr-uhl">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="UjY-Oo-Zbs">
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </tableView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="UjY-Oo-Zbs" secondAttribute="trailing" id="C88-IG-WuM"/>
+                            <constraint firstItem="UjY-Oo-Zbs" firstAttribute="leading" secondItem="5Yh-gr-uhl" secondAttribute="leading" id="CvN-Um-F75"/>
+                            <constraint firstItem="t57-BZ-07u" firstAttribute="top" secondItem="UjY-Oo-Zbs" secondAttribute="bottom" id="O7M-Js-bCP"/>
+                            <constraint firstItem="UjY-Oo-Zbs" firstAttribute="centerX" secondItem="5Yh-gr-uhl" secondAttribute="centerX" id="TVO-m9-Pq6"/>
+                            <constraint firstItem="UjY-Oo-Zbs" firstAttribute="top" secondItem="qr1-Xt-6LQ" secondAttribute="bottom" id="ou2-Wt-CGY"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="Vuu-5k-Jzp">
                         <barButtonItem key="leftBarButtonItem" title="Logout" id="iFt-Ub-yeS">
@@ -100,10 +114,58 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="tableView" destination="UjY-Oo-Zbs" id="7aS-Ro-vLF"/>
+                        <segue destination="lSD-Lw-giG" kind="show" identifier="viewsnapsegue" id="qNx-aF-qZi"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="T1f-Xe-M95" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1936.8" y="122.78860569715144"/>
+        </scene>
+        <!--View Snap View Controller-->
+        <scene sceneID="ksC-pH-g3t">
+            <objects>
+                <viewController id="lSD-Lw-giG" customClass="ViewSnapViewController" customModule="Project_6___Snapchat" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="ISc-tm-Bcq"/>
+                        <viewControllerLayoutGuide type="bottom" id="cl7-Q6-nzI"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Uhx-Hi-K5S">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="N5b-UA-zB3">
+                                <rect key="frame" x="21" y="636" width="333" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="DFH-Np-zx1">
+                                <rect key="frame" x="21" y="74" width="333" height="552"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="DFH-Np-zx1" firstAttribute="leading" secondItem="Uhx-Hi-K5S" secondAttribute="leadingMargin" constant="5" id="Cnp-3n-dCD"/>
+                            <constraint firstItem="cl7-Q6-nzI" firstAttribute="top" secondItem="N5b-UA-zB3" secondAttribute="bottom" constant="10" id="EuH-P3-rKF"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="DFH-Np-zx1" secondAttribute="trailing" constant="5" id="HQR-pg-MAF"/>
+                            <constraint firstItem="DFH-Np-zx1" firstAttribute="centerX" secondItem="Uhx-Hi-K5S" secondAttribute="centerX" id="ItJ-nj-Kfe"/>
+                            <constraint firstItem="N5b-UA-zB3" firstAttribute="top" secondItem="DFH-Np-zx1" secondAttribute="bottom" constant="10" id="XYf-b4-M3m"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="N5b-UA-zB3" secondAttribute="trailing" constant="5" id="Znk-0E-o8m"/>
+                            <constraint firstItem="DFH-Np-zx1" firstAttribute="top" secondItem="ISc-tm-Bcq" secondAttribute="bottom" constant="10" id="f6C-cn-sTd"/>
+                            <constraint firstItem="N5b-UA-zB3" firstAttribute="leading" secondItem="Uhx-Hi-K5S" secondAttribute="leadingMargin" constant="5" id="gHJ-hh-XbK"/>
+                            <constraint firstItem="N5b-UA-zB3" firstAttribute="centerX" secondItem="Uhx-Hi-K5S" secondAttribute="centerX" id="wci-Pi-3At"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="imageView" destination="DFH-Np-zx1" id="Td3-bk-CxT"/>
+                        <outlet property="label" destination="N5b-UA-zB3" id="f1Q-mk-FY3"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hdM-y4-DRq" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1937" y="815"/>
         </scene>
         <!--Picture View Controller-->
         <scene sceneID="lcB-Qv-mg6">
@@ -209,7 +271,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="YY2-7R-BTy" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="RQJ-tp-nS6">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
